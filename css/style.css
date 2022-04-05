@@ -116,7 +116,39 @@ body {
     font-size: 36px;
     font-weight: lighter;
     font-style: italic;
-    color: #1f2937;
+    color: #394b64;
+}
+
+.section-4{
+    background-color: #d7d8dc;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.call-to-action {
+    background-color: #3274df;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    gap: 90px;
+}
+
+.call-to-action .text .main{
+    color: #f9faf8;
+    font-weight: bold;
+}
+.call-to-action .text .sub{
+    color: #f9faf8;
+    /* font-weight: bold; */
+}
+
+.call-to-action button{
+    background-color: #3274df;
+    border: #f9faf8 1px solid;
 }
 ul {
     list-style-type: none;
