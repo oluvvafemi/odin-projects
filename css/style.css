@@ -16,7 +16,7 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
-    color: white;
+    color: #f9faf8;
     /* padding: 30px; */
     font-weight: bold;
     align-items: center;
@@ -29,7 +29,7 @@ body {
 
 .hero {
     display: flex;
-    color: white;
+    color: #f9faf8;
     justify-content:space-between;
     gap: 18px;
 }
@@ -149,6 +149,18 @@ body {
 .call-to-action button{
     background-color: #3274df;
     border: #f9faf8 1px solid;
+}
+
+.footer {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f2937;
+}
+
+.footer .text {
+    color: #f9faf8;
 }
 ul {
     list-style-type: none;
