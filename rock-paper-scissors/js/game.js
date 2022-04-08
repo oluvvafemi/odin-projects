@@ -8,44 +8,44 @@ function computerPlay() {
     return mode[randomNumber];
 }
 
+function compareChoices(playerSelection, computerSelection){
+    let relation = {
+        "rock": {
+            "paper":3,
+            "rock":2,
+            "scissors":1
+        },
+        "paper": {
+            "scissors":3,
+            "paper":2,
+            "rock":1
+        },
+        "scissors": {
+            "rock":3,
+            "scissors":2,
+            "paper":1
+        }
+
+    };
+    let order = relation[playerSelection];
+    return (
+        (order[computerSelection]>order[playerSelection]) ?
+        `You Lose! ${computerSelection} beats ${playerSelection}` : 
+        `You Win! ${playerSelection} beats ${computerSelection}`
+    );
+}
+
 function playOneRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     if (playerSelection === computerSelection)  return "It's a draw";
     switch (playerSelection) {
         case "rock":
-            let rock_comparison = {
-                "paper":3,
-                "rock":2,
-                "scissors":1
-            };
-            return (
-                (rock_comparison[computerSelection]>rock_comparison[playerSelection]) ?
-                `You Lose! ${computerSelection} beats ${playerSelection}` : 
-                `You Win! ${playerSelection} beats ${computerSelection}`
-            );
+            return compareChoices(playerSelection, computerSelection);
         case "paper":
-            let paper_comparison = {
-                "scissors":3,
-                "paper":2,
-                "rock":1
-            };
-            return (
-                (paper_comparison[computerSelection]>paper_comparison[playerSelection]) ?
-                `You Lose! ${computerSelection} beats ${playerSelection}` : 
-                `You Win! ${playerSelection} beats ${computerSelection}`
-            );
+            return compareChoices(playerSelection, computerSelection);
         case "scissors":
-            let scissors_comparison = {
-                "rock":3,
-                "scissors":2,
-                "paper":1
-            };
-            return (
-                (scissors_comparison[computerSelection]>scissors_comparison[playerSelection]) ?
-                `You Lose! ${computerSelection} beats ${playerSelection}` : 
-                `You Win! ${playerSelection} beats ${computerSelection}`
-            );
+            return compareChoices(playerSelection, computerSelection);
         default:
             return "Invalid Input";
     }
