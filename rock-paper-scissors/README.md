@@ -1,0 +1,1 @@
+Simple [Implementation](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors) of Rock, Paper, Scissors in javascript. 
