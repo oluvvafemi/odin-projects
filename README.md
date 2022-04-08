@@ -4,4 +4,4 @@ Landing page project for [the odin projects's foundation course.](https://www.th
 
 The aim of this project is to learn how to style and structure a web page. No functionality added.
 
-!(./img/outlook.png "final outlook of the page")
+![](./img/outlook.png "final outlook of the page")
