@@ -51,6 +51,10 @@ function playOneRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playOneRound(playerSelection, computerSelection));
+function game() {
+    for (let i=0; i<5; i++){
+        let playerSelection = prompt("rock, paper or scissors - your choice", '');
+        let computerSelection = computerPlay();
+        console.log(playOneRound(playerSelection, computerSelection));
+    }
+}
