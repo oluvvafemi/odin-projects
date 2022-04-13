@@ -2,22 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <script src="./js/game.js" defer></script>
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/game.js" defer></script>
 </head>
 
 <body>
-    <div>
-        <div><span>Your Score:</span> <span id="playerscore"></span></div>
-        <div><span>Computer Score:</span> <span id="computerscore"></span></div>
+    <div class="container">
+        <div>
+            <div><span>Your Score:</span> <span id="playerscore"></span></div>
+            <div><span>Computer Score:</span> <span id="computerscore"></span></div>
+        </div>
+        <div>
+            <button data-playerselection="Rock">Rock</button>
+            <button data-playerselection="Paper">Paper</button>
+            <button data-playerselection="Scissors">Scissors</button>
+        </div>
+        <div id="result">
+    
+        </div>
     </div>
-    <div>
-        <button data-playerselection="Rock">Rock</button>
-        <button data-playerselection="Paper">Paper</button>
-        <button data-playerselection="Scissors">Scissors</button>
-    </div>
-    <div id="result">
-
-    </div>
+   
 </body>
 </html>
