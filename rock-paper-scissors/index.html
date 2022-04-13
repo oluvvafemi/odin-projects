@@ -9,17 +9,37 @@
 
 <body>
     <div class="container">
-        <div>
-            <div><span>Your Score:</span> <span id="playerscore"></span></div>
-            <div><span>Computer Score:</span> <span id="computerscore"></span></div>
+        <div class="info">
+            <div id="indicator"></div>
+            <div id="result"></div>
         </div>
-        <div>
-            <button data-playerselection="Rock">Rock</button>
-            <button data-playerselection="Paper">Paper</button>
-            <button data-playerselection="Scissors">Scissors</button>
-        </div>
-        <div id="result">
-    
+        <div class="playground">
+            <div class="area player">
+                <div class="score">
+                    <div><span>Your Score:</span> <span id="playerscore"></span></div>
+                    <!-- <div><span>Computer Score:</span> <span id="computerscore"></span></div> -->
+                </div>
+                <div class="buttongroups">
+                    <button data-playerselection="Rock"><img src="./img/rock.png">Rock</button>
+                    <button data-playerselection="Paper"><img src="./img/paper.png">Paper</button>
+                    <button data-playerselection="Scissors"><img src="./img/scissors.png">Scissors</button>
+                </div>
+            </div>
+            <div id="divider"></div>
+            <div class="area computer">
+                <div class="score">
+                    <!-- <div><span>Your Score:</span> <span id="playerscore"></span></div> -->
+                    <div><span>Computer Score:</span> <span id="computerscore"></span></div>
+                </div>
+                <div class="buttongroups">
+                    <button data-computerselection="Rock"><img src="./img/rock.png">Rock</button>
+                    <button data-computerelection="Paper"><img src="./img/paper.png">Paper</button>
+                    <button data-computerselection="Scissors"><img src="./img/scissors.png">Scissors</button>
+                </div>
+            </div>
+            <!-- <div id="result">
+        
+            </div> -->
         </div>
     </div>
    

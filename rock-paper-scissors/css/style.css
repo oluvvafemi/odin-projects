@@ -2,9 +2,108 @@ html, body{
     height: 100%;
 }
 body {
-    background-color: rgb(220, 232, 188);
+    background-color: rgb(41, 171, 194);
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center; 
 }
+
+.container {
+    background-color: rgb(243, 245, 239);
+    padding: 10px 30px 30px 10px;
+    padding: 30px;
+    /* border-radius: 14px 30px 60px; */
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* border-radius: 80%; */
+    /* background-image: url("../img/tv-frame.png"); */
+    /* background-size: cover ; */
+    /* background-repeat: no-repeat; */
+    /* height: 300px; */
+    /* width: 700px; */
+    /* background-position: center; */
+    /* height: 755px;
+    width: auto; */
+   /* width: 1200px; */
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+}
+#indicator {
+    background-color:rgb(163, 240, 31) ;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+#result {
+    background-color: rgb(189, 170, 170);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    height: 30px;
+    flex: 1;
+    width: 200px;
+    font-size: large;
+    font-weight: bold;
+}
+
+/* #result {
+}*/
+
+.score{
+    font-size: larger;
+    font-weight: bold;
+} 
+.playground {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    /* background-color: blueviolet; */
+}
+
+#divider {
+    border: 2px black solid;
+    height: 180px;
+    border-style: dashed;
+}
+
+.area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.buttongroups img{
+    height: 80px;
+    width: 90px;
+}
+button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background-color: aquamarine;
+}
+.buttongroups{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.computer button{
+    opacity: 0.4;
+}
+/* button[data-playerselection='Rock'], button[data-computerselection='Rock'] {
+    width: 400px;
+} */
