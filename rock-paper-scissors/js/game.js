@@ -88,7 +88,6 @@ let prepareNewGame = function(){
 
 let buttonRestPosition = function(e) {   
     if (e.propertyName !== 'transform') return;
-    // console.log(this);
     this.classList.remove('press');
 };
 
@@ -118,9 +117,7 @@ const playground = document.querySelector('.playground');
 const container = document.querySelector('.container');
 const restartButton = document.createElement('button');
 
-// updateAndDisplayScore();
 prepareNewGame();
-
 
 playerButtons.forEach(button => button.addEventListener('click', () => {
     let computerSelection = computerPlay();
@@ -147,6 +144,5 @@ restartButton.addEventListener('click', ()=> {
     container.appendChild(playground);
     restartButton.remove();
     prepareNewGame();
-
 });
 
