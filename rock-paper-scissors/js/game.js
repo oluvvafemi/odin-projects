@@ -81,9 +81,6 @@ let prepareNewGame = function(){
     updateAndDisplayScore(0, 0, true);
     result.textContent = "";
     indicator.classList.remove('off');
-    allButtonsReset();
-
-
 }
 
 let buttonRestPosition = function(e) {   
@@ -102,6 +99,7 @@ let restartWindow = function(){
     playground.remove();
     container.appendChild(restartButton);
     indicator.classList.add('off');
+    allButtonsReset();
 
 };
 
