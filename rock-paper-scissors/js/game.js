@@ -105,6 +105,12 @@ let restartWindow = function(){
 
 };
 
+let checkforWinner = function(){
+    if (playerScore < 5 && computerScore < 5) return;
+    result.textContent = (playerScore > computerScore) ? "You Win the Game!" : "Computer Wins the Game!";
+    restartWindow();
+}
+
 let playerScore;
 let computerScore;
 const playerScoreDisplay = document.querySelector("#playerscore");
@@ -125,15 +131,7 @@ playerButtons.forEach(button => button.addEventListener('click', () => {
     button.classList.add('press');
     computerButton.classList.add('press');
     playOneRound(button.dataset.playerselection, computerSelection);
-    if(computerScore >= 5){
-        restartWindow();
-        updateAndDisplayScore(0,0,true);
-        result.textContent = "Computer Wins the Game!";
-    } else if(playerScore >= 5) {
-        restartWindow();
-        updateAndDisplayScore(0,0,true);
-        result.textContent = "You Win the Game!";
-    }
+    checkforWinner();
 }));
 
 playerButtons.forEach(button => button.addEventListener('transitionend', buttonRestPosition));
