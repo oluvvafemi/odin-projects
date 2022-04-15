@@ -76,27 +76,27 @@ let xBeatsYcomment = function (x, y){
 let playedSameKindComment = function(kind){
     result.textContent = `you both played ${kind}`;
 };
-// let commentaryBox = function(kind){
-//     kinds = ['x>y', 'same', 'gameEnd']
-//     switch (key) {
-//         case 'x>y':
-//             xBeatsYcomment()
-//             break;
-    
-//         default:
-//             break;
-//     }
-// }
 
-let playerScore=0,
-    computerScore=0;
+let prepareNewGame = function(){
 
+}
+
+let playerScore=0;
+let computerScore=0;
 const playerScoreDisplay = document.querySelector("#playerscore");
 const computerScoreDisplay = document.querySelector("#computerscore");
-updateAndDisplayScore();
-
 const playerButtons = document.querySelectorAll(".player button");
 const result = document.querySelector("#result");
+const computerButtons = document.querySelectorAll(".computer button");
+
+// computerButtons.forEach(bt => console.log(bt.dataset.computerselection));
+// console.log([...computerButtons].filter(btn => btn.dataset.computerselection==='Rock')[0]);
+// console.log(computerButtons[0]);
+// console.log(...computerButtons);
+// console.log(Array.from(computerButtons)[0]);
+updateAndDisplayScore();
+
+
 
 let computerButton;
 // let restartButton;
@@ -110,37 +110,34 @@ const indicator = document.querySelector('.indicator');
 
 playerButtons.forEach(button => button.addEventListener('click', () => {
     let computerSelection = computerPlay();
-    computerButton = document.querySelector(`button[data-computerselection='${computerSelection}']`);
-    // console.log(computerButton);
+    computerButton = [...computerButtons].filter(btn => btn.dataset.computerselection===`${computerSelection}`)[0];
     button.classList.add('press');
     computerButton.classList.add('press');
     playOneRound(button.dataset.playerselection, computerSelection);
-    computerButton.addEventListener('transitionend', () =>{
-        computerButton.classList.remove('press');
-    })
     if(computerScore >= 5){
         restartWindow();
         updateAndDisplayScore(0,0,true);
         result.textContent = "Computer Wins the Game!";
-        // console.log("Computer Wins the Game!");
     } else if(playerScore >= 5) {
         restartWindow();
         updateAndDisplayScore(0,0,true);
         result.textContent = "You Win the Game!";
-        // console.log("Player Wins the Game!");
     }
 }));
 
 playerButtons.forEach(button => button.addEventListener('transitionend', (e) => {
-//  console.log(e);
     if (e.propertyName !== 'transform') return;
     button.classList.remove('press');
+}));
+
+computerButtons.forEach(button => button.addEventListener('transitionend', (e) => {
+        if (e.propertyName !== 'transform') return;
+        button.classList.remove('press');
 }));
 
 let restartWindow = function(){
    
     restartButton.textContent = "Restart Game";
-    // playground.textContent='';
     playground.remove();
     container.appendChild(restartButton);
     indicator.classList.add('off');
