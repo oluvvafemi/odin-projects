@@ -9,6 +9,11 @@ function computerPlay() {
 }
 
 function compareChoices(playerSelection, computerSelection){
+    if (playerSelection === computerSelection)  {
+        playedSameKindComment(playerSelection);
+        return;
+    }
+
     let relation = {
         "rock": {
             "paper":3,
@@ -28,47 +33,67 @@ function compareChoices(playerSelection, computerSelection){
 
     };
     let order = relation[playerSelection];
-    let info = '';
+
     if (order[computerSelection]>order[playerSelection]){
-        updateDisplayScore(0,1);
-        info = `${computerSelection} beats ${playerSelection}`;
+        updateAndDisplayScore(0,1);
+        xBeatsYcomment(computerSelection, playerSelection);
     }else{
-        updateDisplayScore(1,0);
-        info = `${playerSelection} beats ${computerSelection}`;
+        updateAndDisplayScore(1,0);
+        xBeatsYcomment(playerSelection, computerSelection);
     }
-    return info;
 }
 
 function playOneRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-    if (playerSelection === computerSelection)  return `You both played ${playerSelection}`;
     switch (playerSelection) {
         case "rock":
-            return compareChoices(playerSelection, computerSelection);
+            compareChoices(playerSelection, computerSelection);
+            break;
         case "paper":
-            return compareChoices(playerSelection, computerSelection);
+            compareChoices(playerSelection, computerSelection);
+            break;
         case "scissors":
-            return compareChoices(playerSelection, computerSelection);
+            compareChoices(playerSelection, computerSelection);
+            break;
         default:
-            return "Invalid Input";
+            break;
     }
 }
 
-function updateDisplayScore(playerwin=0, computerwin=0, gameover=false){
+let updateAndDisplayScore = function (playerwin=0, computerwin=0, gameover=false){
     if (gameover) {playerScore=computerScore=0};
     playerScore += playerwin;
     computerScore += computerwin;
     playerScoreDisplay.textContent = playerScore;
     computerScoreDisplay.textContent = computerScore;
-}
+};
+
+let xBeatsYcomment = function (x, y){
+    result.textContent = `${x} beats ${y}`;
+};
+
+let playedSameKindComment = function(kind){
+    result.textContent = `you both played ${kind}`;
+};
+// let commentaryBox = function(kind){
+//     kinds = ['x>y', 'same', 'gameEnd']
+//     switch (key) {
+//         case 'x>y':
+//             xBeatsYcomment()
+//             break;
+    
+//         default:
+//             break;
+//     }
+// }
 
 let playerScore=0,
     computerScore=0;
 
 const playerScoreDisplay = document.querySelector("#playerscore");
 const computerScoreDisplay = document.querySelector("#computerscore");
-updateDisplayScore();
+updateAndDisplayScore();
 
 const playerButtons = document.querySelectorAll(".player button");
 const result = document.querySelector("#result");
@@ -89,18 +114,18 @@ playerButtons.forEach(button => button.addEventListener('click', () => {
     // console.log(computerButton);
     button.classList.add('press');
     computerButton.classList.add('press');
-    result.textContent = playOneRound(button.dataset.playerselection, computerSelection);
+    playOneRound(button.dataset.playerselection, computerSelection);
     computerButton.addEventListener('transitionend', () =>{
         computerButton.classList.remove('press');
     })
     if(computerScore >= 5){
         restartWindow();
-        updateDisplayScore(0,0,true);
+        updateAndDisplayScore(0,0,true);
         result.textContent = "Computer Wins the Game!";
         // console.log("Computer Wins the Game!");
     } else if(playerScore >= 5) {
         restartWindow();
-        updateDisplayScore(0,0,true);
+        updateAndDisplayScore(0,0,true);
         result.textContent = "You Win the Game!";
         // console.log("Player Wins the Game!");
     }
