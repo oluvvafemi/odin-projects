@@ -2,7 +2,7 @@ html, body{
     height: 100%;
 }
 body {
-    background-color: rgb(41, 171, 194);
+    background-color: rgb(41, 194, 176);
     margin: 0;
     display: flex;
     align-items: center;
@@ -12,7 +12,8 @@ body {
 }
 
 .container {
-    background-color: rgb(243, 245, 239);
+    /* background-color: rgb(243, 245, 239); */
+    background-color: rgb(19, 81, 92);
     padding: 10px 30px 30px 10px;
     padding: 30px;
     /* border-radius: 14px 30px 60px; */
@@ -52,7 +53,8 @@ body {
 }
 
 #result {
-    background-color: rgb(189, 170, 170);
+    /* background-color: rgb(189, 170, 170); */
+    background-color: rgb(206, 241, 247);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,12 +77,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: white;
     gap: 40px;
     /* background-color: blueviolet; */
 }
 
 #divider {
-    border: 2px black solid;
+    border: 2px wheat solid;
     height: 180px;
     border-style: dashed;
 }
@@ -101,7 +104,8 @@ button {
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    background-color: rgb(41, 171, 194);
     box-shadow: 3px 3px;
     border: none;
     transition: 1.05s;
@@ -123,7 +127,8 @@ button {
 
 .press {
     transform: scale(0.9);
-    background-color: rgb(229, 127, 255);
+    /* background-color: rgb(229, 127, 255); */
+    background-color: rgb(163, 234, 246);
 }
 
 a {
