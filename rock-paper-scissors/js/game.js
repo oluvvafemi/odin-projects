@@ -78,39 +78,53 @@ let playedSameKindComment = function(kind){
 };
 
 let prepareNewGame = function(){
+    updateAndDisplayScore(0, 0, true);
+    result.textContent = "";
+    indicator.classList.remove('off');
+    allButtonsReset();
+
 
 }
 
-let playerScore=0;
-let computerScore=0;
+let buttonRestPosition = function(e) {   
+    if (e.propertyName !== 'transform') return;
+    // console.log(this);
+    this.classList.remove('press');
+};
+
+let allButtonsReset = function() {
+    computerButtons.forEach(btn => btn.classList.remove('press'));
+    playerButtons.forEach(btn => btn.classList.remove('press'))
+};
+
+let restartWindow = function(){
+   
+    restartButton.textContent = "Restart Game";
+    playground.remove();
+    container.appendChild(restartButton);
+    indicator.classList.add('off');
+
+};
+
+let playerScore;
+let computerScore;
 const playerScoreDisplay = document.querySelector("#playerscore");
 const computerScoreDisplay = document.querySelector("#computerscore");
 const playerButtons = document.querySelectorAll(".player button");
 const result = document.querySelector("#result");
 const computerButtons = document.querySelectorAll(".computer button");
-
-// computerButtons.forEach(bt => console.log(bt.dataset.computerselection));
-// console.log([...computerButtons].filter(btn => btn.dataset.computerselection==='Rock')[0]);
-// console.log(computerButtons[0]);
-// console.log(...computerButtons);
-// console.log(Array.from(computerButtons)[0]);
-updateAndDisplayScore();
-
-
-
-let computerButton;
-// let restartButton;
-// let playground;
-
+const indicator = document.querySelector('.indicator');
 const playground = document.querySelector('.playground');
 const container = document.querySelector('.container');
 const restartButton = document.createElement('button');
-const indicator = document.querySelector('.indicator');
+
+// updateAndDisplayScore();
+prepareNewGame();
 
 
 playerButtons.forEach(button => button.addEventListener('click', () => {
     let computerSelection = computerPlay();
-    computerButton = [...computerButtons].filter(btn => btn.dataset.computerselection===`${computerSelection}`)[0];
+    let computerButton = [...computerButtons].filter(btn => btn.dataset.computerselection===`${computerSelection}`)[0];
     button.classList.add('press');
     computerButton.classList.add('press');
     playOneRound(button.dataset.playerselection, computerSelection);
@@ -125,30 +139,14 @@ playerButtons.forEach(button => button.addEventListener('click', () => {
     }
 }));
 
-playerButtons.forEach(button => button.addEventListener('transitionend', (e) => {
-    if (e.propertyName !== 'transform') return;
-    button.classList.remove('press');
-}));
+playerButtons.forEach(button => button.addEventListener('transitionend', buttonRestPosition));
 
-computerButtons.forEach(button => button.addEventListener('transitionend', (e) => {
-        if (e.propertyName !== 'transform') return;
-        button.classList.remove('press');
-}));
-
-let restartWindow = function(){
-   
-    restartButton.textContent = "Restart Game";
-    playground.remove();
-    container.appendChild(restartButton);
-    indicator.classList.add('off');
-
-};
+computerButtons.forEach(button => button.addEventListener('transitionend', buttonRestPosition));
 
 restartButton.addEventListener('click', ()=> {
     container.appendChild(playground);
     restartButton.remove();
-    indicator.classList.remove('off');
-    result.textContent = "";
+    prepareNewGame();
 
 });
 
