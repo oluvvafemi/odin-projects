@@ -70,17 +70,63 @@ const playerScoreDisplay = document.querySelector("#playerscore");
 const computerScoreDisplay = document.querySelector("#computerscore");
 updateDisplayScore();
 
-const buttons = document.querySelectorAll("button");
+const playerButtons = document.querySelectorAll(".player button");
 const result = document.querySelector("#result");
 
-buttons.forEach(button => button.addEventListener('click', () => {
+let computerButton;
+// let restartButton;
+// let playground;
+
+const playground = document.querySelector('.playground');
+const container = document.querySelector('.container');
+const restartButton = document.createElement('button');
+const indicator = document.querySelector('.indicator');
+
+
+playerButtons.forEach(button => button.addEventListener('click', () => {
     let computerSelection = computerPlay();
+    computerButton = document.querySelector(`button[data-computerselection='${computerSelection}']`);
+    // console.log(computerButton);
+    button.classList.add('press');
+    computerButton.classList.add('press');
     result.textContent = playOneRound(button.dataset.playerselection, computerSelection);
+    computerButton.addEventListener('transitionend', () =>{
+        computerButton.classList.remove('press');
+    })
     if(computerScore >= 5){
+        restartWindow();
         updateDisplayScore(0,0,true);
-        console.log("Computer Wins the Game!");
+        result.textContent = "Computer Wins the Game!";
+        // console.log("Computer Wins the Game!");
     } else if(playerScore >= 5) {
+        restartWindow();
         updateDisplayScore(0,0,true);
-        console.log("Player Wins the Game!");
+        result.textContent = "You Win the Game!";
+        // console.log("Player Wins the Game!");
     }
 }));
+
+playerButtons.forEach(button => button.addEventListener('transitionend', (e) => {
+//  console.log(e);
+    if (e.propertyName !== 'transform') return;
+    button.classList.remove('press');
+}));
+
+let restartWindow = function(){
+   
+    restartButton.textContent = "Restart Game";
+    // playground.textContent='';
+    playground.remove();
+    container.appendChild(restartButton);
+    indicator.classList.add('off');
+
+};
+
+restartButton.addEventListener('click', ()=> {
+    container.appendChild(playground);
+    restartButton.remove();
+    indicator.classList.remove('off');
+    result.textContent = "";
+
+});
+
