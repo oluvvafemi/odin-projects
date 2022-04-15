@@ -9,6 +9,7 @@ body {
     justify-content: center; 
     flex-direction: column;
     gap: 10px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .container {
@@ -113,6 +114,8 @@ button {
     padding: 10px;
     font-weight: bold;
     font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+
 }
 .buttongroups{
     display: flex;
@@ -133,6 +136,8 @@ button {
 
 a {
     color: black;
+    font-family: 'Courier New', Courier, monospace;
+
 }
 .footer {
     display: flex;
